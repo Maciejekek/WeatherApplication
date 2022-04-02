@@ -16,7 +16,7 @@ public class ForecastController {
             var forecastDTO = forecastMapper.asForecastDTO(forecast);
             return objectMapper.writeValueAsString(forecastDTO);
         } catch (Exception e) {
-            return String.format("{\"status\": \"error\", \"message\": \"%s\"}", e.getMessage());
+            return String.format("error message: %s}", e.getMessage());
         }
     }
 }

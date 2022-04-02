@@ -32,7 +32,7 @@ public class ForecastService {
                 .orElseThrow(() -> new BadRequestException("Lokalizacja " + cityId + " nie wystepuje w bazie danych, dajpierw dodaj lokalizację, zeby sprawdzic dla niej prognoze pogody"));
 
         var forecastDate = LocalDate.now().plusDays(periodValue);
-        var forecast = forecastClient.getForecast(location.getCity(), forecastDate)
+        var forecast = forecastClient.getForecast(forecastDate, location.getLatitude(), location.getLongitude())
                 .orElseThrow(() -> new InternalServerException("Nie mozna pobrac prognozy pogody dla miasta: " + location.getCity()));
         forecast.setLocation(location);
         forecast.setCreatedDate(Instant.now());

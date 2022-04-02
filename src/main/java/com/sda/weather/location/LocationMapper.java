@@ -6,6 +6,8 @@ public class LocationMapper {
         var locationDTO = new LocationDTO();
         locationDTO.setId(location.getId());
         locationDTO.setCity(location.getCity());
+        locationDTO.setLongitude(location.getLongitude());
+        locationDTO.setLatitude(location.getLatitude());
         return locationDTO;
     }
 }

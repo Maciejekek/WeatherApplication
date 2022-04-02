@@ -44,12 +44,12 @@ public class UI {
     }
 
     private void getWeatherForecast() {
-        System.out.print("Podaj nazwe miasta: ");
+        System.out.print("Podaj ID miasta: ");
         String cityId = scanner.nextLine();
-        System.out.print("Podaj dzień prognozy [1-5] (opcjonalne): ");
+        System.out.print("Podaj dzień prognozy [1-5]: ");
         String period = scanner.nextLine();
         String result = forecastController.getForecast(cityId, period);
-        System.out.println("Odpowiedź serwera: \n" + result + "\n");
+        System.out.println("Odpowiedź serwera: " + result);
     }
 
     private void createLocation() {
