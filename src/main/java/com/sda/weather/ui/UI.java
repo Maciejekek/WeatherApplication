@@ -1,6 +1,5 @@
 package com.sda.weather.ui;
 
-import com.sda.weather.forecast.ForecastController;
 import com.sda.weather.location.LocationController;
 import lombok.RequiredArgsConstructor;
 
@@ -11,7 +10,6 @@ public class UI {
 
     private final Scanner scanner;
     private final LocationController locationController;
-    private final ForecastController forecastController;
 
     public void run(){
         System.out.println("|---------------------------|");
@@ -33,7 +31,6 @@ public class UI {
                     getLocation();
                     break;
                 case 3:
-                    getWeatherForecast();
                     break;
                 case 4:
                     return;
@@ -41,15 +38,6 @@ public class UI {
                     System.out.println("Podana wartość musi być cyfrą! Wpisz cyfrę!");
             }
         }
-    }
-
-    private void getWeatherForecast() {
-        System.out.print("Podaj nazwe miasta: ");
-        String cityId = scanner.nextLine();
-        System.out.print("Podaj dzień prognozy [1-5] (opcjonalne): ");
-        String period = scanner.nextLine();
-        String result = forecastController.getForecast(cityId, period);
-        System.out.println("Odpowiedź serwera: \n" + result + "\n");
     }
 
     private void createLocation() {
@@ -64,7 +52,6 @@ public class UI {
         System.out.println("Podaj długość geograficzną: ");
         String latitude = scanner.nextLine();
         String response = locationController.createLocation(city, region, country, longitude, latitude);
-        //todo rzucanie nowych wątków
         System.out.println("Odpowiedź serwera: " + response + "\n");
     }
 
