@@ -12,12 +12,9 @@ public class ForecastRepositoryImpl implements ForecastRepository {
     public Forecast save(Forecast forecast) {
         var session = sessionFactory.openSession();
         var transaction = session.beginTransaction();
-
         session.persist(forecast);
-
         transaction.commit();
         session.close();
-
         return forecast;
     }
 }
