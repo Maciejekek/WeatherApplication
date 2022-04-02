@@ -17,7 +17,6 @@ public class WeatherApplication {
         var sessionFactory = new MetadataSources(registry)
                 .buildMetadata()
                 .buildSessionFactory();
-
         var locationRepository = new LocationRepositoryImpl(sessionFactory);
         var locationService = new LocationService(locationRepository);
         var objectMapper = new ObjectMapper();
@@ -25,7 +24,7 @@ public class WeatherApplication {
         var locationMapper = new LocationMapper();
         var locationController = new LocationController(objectMapper, locationService, locationMapper);
         var scanner = new Scanner(System.in);
-        UI ui = new UI(scanner , locationController);
+        var ui = new UI(scanner , locationController);
         ui.run();
     }
 }

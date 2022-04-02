@@ -1,3 +1,4 @@
 /target
 /.idea
 *.iml
+/main/java/com/sda/weather/forecast

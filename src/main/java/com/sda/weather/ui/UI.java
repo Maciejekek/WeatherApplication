@@ -22,9 +22,7 @@ public class UI {
             System.out.println("2. Wyświetlić dodane lokalizacje");
             System.out.println("3. Wyświetlić informacje o pogodzie dla lokalizacji");
             System.out.println("4. Zamknąć aplikację");
-
             int userInput = getInteger();
-
             switch (userInput) {
                 case 1:
                     createLocation();
@@ -54,7 +52,6 @@ public class UI {
         System.out.println("Podaj długość geograficzną: ");
         String latitude = scanner.nextLine();
         String response = locationController.createLocation(city, region, country, longitude, latitude);
-        //todo rzucanie nowych wątków
         System.out.println("Odpowiedź serwera: " + response + "\n");
     }
 
