@@ -31,16 +31,9 @@ public class LocationService {
             region = null;
         }
 
-        double longitudeValue = 0d;
-        double latitudeValue = 0d;
-        try {
-            longitude = longitude.replaceAll(",", ".");
-            latitude = latitude.replaceAll(",", ".");
-            longitudeValue = Double.parseDouble(longitude);
-            latitudeValue = Double.parseDouble(latitude);
-        } catch (NumberFormatException e) {
-            throw new BadRequestException("Szerokość i długość geograficzna muszą być liczbami");
-        }
+        double longitudeValue = parseValue(longitude);
+        double latitudeValue = parseValue(latitude);
+
         if (longitudeValue > 90 || longitudeValue < -90) {
             throw new BadRequestException("Szerokość geograficzna musi mieścić się w przedziale <-90; 90>");
         }
@@ -50,6 +43,15 @@ public class LocationService {
 
         Location location = new Location(city, region, country, longitudeValue, latitudeValue);
         return locationRepository.save(location);
+    }
+
+    private double parseValue(String value) {
+        try {
+            value = value.replaceAll(",", ".");
+            return Double.parseDouble(value);
+        }catch (NumberFormatException e) {
+            throw new BadRequestException("Szerokość i długość geograficzna muszą być liczbami");
+        }
     }
 
     List<Location> getLocations() {
