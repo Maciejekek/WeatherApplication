@@ -20,7 +20,6 @@ public class ForecastResponseMapper {
         forecast.setForecastDate(forecastDateInstant);
         return forecast;
     }
-
     LocalDateTime asLocalDateTime(String date) {
         var dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return LocalDateTime.parse(date, dateTimeFormatter);
