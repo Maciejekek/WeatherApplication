@@ -24,9 +24,7 @@ public class UI {
             System.out.println("2. Wyświetlić dodane lokalizacje");
             System.out.println("3. Wyświetlić informacje o pogodzie dla lokalizacji");
             System.out.println("4. Zamknąć aplikację");
-
             int userInput = getInteger();
-
             switch (userInput) {
                 case 1:
                     createLocation();
@@ -50,7 +48,6 @@ public class UI {
         String cityId = scanner.nextLine();
         System.out.print("Podaj dzień prognozy [1-5] (opcjonalne): ");
         String period = scanner.nextLine();
-
         String result = forecastController.getForecast(cityId, period);
         System.out.println("Odpowiedź serwera: \n" + result + "\n");
     }

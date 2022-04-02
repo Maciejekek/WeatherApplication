@@ -2,7 +2,6 @@ package com.sda.weather.forecast;
 
 import com.sda.weather.exceptions.*;
 import com.sda.weather.forecast.client.ForecastClient;
-import com.sda.weather.location.Location;
 import com.sda.weather.location.LocationService;
 import lombok.RequiredArgsConstructor;
 
