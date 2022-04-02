@@ -54,6 +54,7 @@ public class UI {
         System.out.println("Podaj długość geograficzną: ");
         String latitude = scanner.nextLine();
         String response = locationController.createLocation(city, region, country, longitude, latitude);
+        //todo rzucanie nowych wątków
         System.out.println("Odpowiedź serwera: " + response + "\n");
     }
 
