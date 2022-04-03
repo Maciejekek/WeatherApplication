@@ -26,8 +26,7 @@ public class ForecastRepositoryImpl implements ForecastRepository {
     public Optional<Forecast> findByLocationAndForecastDateAndCreationDate(Location location, LocalDate forecastDate, LocalDate creationDate) {
         var session = sessionFactory.openSession();
         var transaction = session.beginTransaction();
-        Optional<Forecast> forecast = session.createQuery("SELECT l, f, g FROM Forecast l WHERE" +
-                        " l.location_id = :location_id, f.forecastDate = :forecastDate, g.creationDate = :creationDate", Forecast.class)
+        Optional<Forecast> forecast = session.createQuery("SELECT f FROM Forecast f JOIN f.location l WHERE l.id: l.location_id AND f.forecastDate = :forecastDate AND g.creationDate = :creationDate", Forecast.class)
                 .setParameter("location_id", location.getId())
                 .setParameter("forecastDate", forecastDate)
                 .setParameter("creationDate", creationDate)
