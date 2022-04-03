@@ -11,10 +11,10 @@ public class LocationService {
 
     private final LocationRepository locationRepository;
 
-    public Optional<Location> getLocationById(String cityId) {
+    public Optional<Location> findLocationById(String cityId) {
         try {
             long id = Long.parseLong(cityId);
-            return locationRepository.getLocationById(id);
+            return locationRepository.findById(id);
         } catch (NumberFormatException e) {
             return Optional.empty();
         }

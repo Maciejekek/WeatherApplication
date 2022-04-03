@@ -8,9 +8,8 @@ public class WindDirectionMapper {
 
     String mapWindDirection(int windDirection) {
         if (windDirection > 360 || windDirection < 0) {
-            throw new InternalServerException("Kierunek wiatru nie moze zostac zmapowany: " + windDirection);
+            throw new InternalServerException("Execute Order 66");
         }
-
         double val = Math.floor((windDirection / 22.5) + 0.5);
         return DIRECTIONS[(int) (val % 16)];
     }

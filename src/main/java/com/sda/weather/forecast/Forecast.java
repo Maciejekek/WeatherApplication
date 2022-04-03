@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.Instant;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -14,8 +14,8 @@ public class Forecast {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Instant createdDate;
-    private Instant forecastDate;
+    private LocalDate createdDate;
+    private LocalDate forecastDate;
     private float temperature;
     private int pressure;
     private int humidity;

@@ -32,7 +32,7 @@ public class LocationRepositoryImpl implements LocationRepository {
     }
 
     @Override
-    public Optional<Location> getLocationById(Long id) {
+    public Optional<Location> findById(Long id) {
         var session = sessionFactory.openSession();
         var transaction = session.beginTransaction();
         Optional<Location> location = session.createQuery("SELECT l FROM Location l WHERE l.id = :id", Location.class)

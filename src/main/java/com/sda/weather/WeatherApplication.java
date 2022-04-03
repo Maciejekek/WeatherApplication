@@ -3,7 +3,7 @@ package com.sda.weather;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sda.weather.forecast.client.ForecastClient;
-import com.sda.weather.forecast.client.ForecastResponseMapper;
+import com.sda.weather.forecast.client.ForecastClientResponseMapper;
 import com.sda.weather.location.*;
 import com.sda.weather.forecast.*;
 import com.sda.weather.ui.UI;
@@ -27,7 +27,7 @@ public class WeatherApplication {
         var locationMapper = new LocationMapper();
         var locationController = new LocationController(objectMapper, locationService, locationMapper);
         var forecastRepository = new ForecastRepositoryImpl(sessionFactory);
-        var forecastResponseMapper = new ForecastResponseMapper();
+        var forecastResponseMapper = new ForecastClientResponseMapper();
         var forecastClient = new ForecastClient(forecastResponseMapper,objectMapper);
         var forecastService = new ForecastService(locationService, forecastClient, forecastRepository);
         var windDirectionMapper = new WindDirectionMapper();

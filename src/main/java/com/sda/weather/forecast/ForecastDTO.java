@@ -6,10 +6,10 @@ import lombok.Getter;
 @Getter
 @Builder
 class ForecastDTO {
+    private final Long id;
     private final float temperature;
     private final int pressure;
     private final int humidity;
     private final int windSpeed;
     private final String windDirection;
-    private final String date;
 }

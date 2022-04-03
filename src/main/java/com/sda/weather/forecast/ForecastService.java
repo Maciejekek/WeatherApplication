@@ -24,18 +24,18 @@ public class ForecastService {
         } catch (NumberFormatException e) {
             throw new BadRequestException("Dzien prognozy musi być liczba");
         }
-        if (periodValue > 5 || periodValue < 1) {
-            throw new BadRequestException("dzien prognozy musi być liczbą z zakresu 1-5");
+        if (periodValue > 7 || periodValue < 1) {
+            throw new BadRequestException("dzien prognozy musi być liczbą z zakresu 1-7");
         }
 
-        var location = locationService.getLocationById(cityId)
+        var location = locationService.findLocationById(cityId)
                 .orElseThrow(() -> new BadRequestException("Lokalizacja " + cityId + " nie wystepuje w bazie danych, dajpierw dodaj lokalizację, zeby sprawdzic dla niej prognoze pogody"));
 
         var forecastDate = LocalDate.now().plusDays(periodValue);
         var forecast = forecastClient.getForecast(forecastDate, location.getLatitude(), location.getLongitude())
                 .orElseThrow(() -> new InternalServerException("Nie mozna pobrac prognozy pogody dla miasta: " + location.getCity()));
         forecast.setLocation(location);
-        forecast.setCreatedDate(Instant.now());
+        forecast.setCreatedDate(LocalDate.now());
 
         return forecastRepository.save(forecast);
     }

@@ -14,7 +14,6 @@ public class ForecastMapper {
                 .humidity(forecast.getHumidity())
                 .windSpeed(forecast.getWindSpeed())
                 .windDirection(windDirectionMapper.mapWindDirection(forecast.getWindDirection()))
-                .date(forecast.getForecastDate().toString())
                 .build();
     }
 }
